@@ -1,8 +1,12 @@
 import React from 'react';
+import List from '../Components/List';
 
 const Projects = () => {
     return (
-        <p> Projects </p>
+        <div className='projects-container wrapper'>
+            <p>Projects</p>
+            <List />
+        </div>
     );
 };
 
