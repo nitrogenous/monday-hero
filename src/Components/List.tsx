@@ -1,8 +1,12 @@
 import React from 'react';
+import ListItem from './ListItem';
 
 const List = () => {
     return (
-        <p>List</p>
+        <div> 
+            <p>List</p>
+            <ListItem />
+        </div>
     );
 };
 
