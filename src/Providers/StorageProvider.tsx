@@ -8,7 +8,7 @@ type ReactNodes = {
 };
 
 const StorageProvider = ({ children }: ReactNodes) => {
-    return <Provider value={{}} > { children } </Provider>
+    return <Provider value={{}}> { children } </Provider>
 };
 
 export { StorageProvider, StorageConsumer, StorageContext };
