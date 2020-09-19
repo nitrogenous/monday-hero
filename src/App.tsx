@@ -1,13 +1,11 @@
 import React from 'react';
-import './App.css';
+import { Providers } from './Providers/index';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        Wololo
-      </header>
-    </div>
+    <Providers>
+      <a>ehe</a> 
+    </Providers>
   );
 }
 
