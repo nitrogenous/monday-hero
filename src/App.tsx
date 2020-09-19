@@ -1,10 +1,11 @@
 import React from 'react';
 import { Providers } from './Providers/index';
+import Projects from './Containers/Projects';
 
 function App() {
   return (
     <Providers>
-      <a>ehe</a> 
+        <Projects />
     </Providers>
   );
 }
