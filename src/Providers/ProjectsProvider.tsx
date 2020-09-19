@@ -3,11 +3,11 @@ import React, { createContext, useState, useEffect, ReactNode } from 'react';
 const ProjectsContext = createContext({});
 const { Provider, Consumer: ProjectsConsumer } = ProjectsContext;
 
-type ReactNodes = {
+type propTypesOfProvider = {
     children: ReactNode
 };
 
-const ProjectsProvider = ({ children }: ReactNodes) => {
+const ProjectsProvider = ({ children }: propTypesOfProvider) => {
     return <Provider value={{}}> { children } </Provider>
 };
 
