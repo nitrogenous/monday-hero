@@ -1,33 +1,76 @@
-.App {
-  text-align: center;
+:root {
+    --main-font-color: #D0D0D0;
+    --main-background-color: #171718;
+    --second-background-color: #444547;
+    --third-background-color: #151517;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+html {
+    padding: 0px 5vw;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+body, .projects {
+    background: var(--main-background-color);
 }
 
-.App-link {
-  color: #61dafb;
+.projects.header {
+    height: 100%;
+    display: flex;
+    background: none;
+    padding: 25px 0px;
+    align-items: center;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.projects.header .projects.title {
+    margin: 0 15px 0 0;
+    display: inline-flex;
+    color: var(--main-font-color);
+}
+
+.projects.button {
+    border: none;
+    height: 25px;
+    width: 45px;
+    font-size: 30px;
+    font-weight: 500;
+    line-height: .75rem;
+    color: var(--main-font-color);
+    background: var(--second-background-color);
+}
+
+.projects .list-items-wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    grid-gap: .25rem;
+    align-items: flex-start;
+}
+
+.projects .list-item.card {
+    width: 100%;
+    height: 100%;
+    padding: 15px;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    background: none !important;
+    color: var(--main-font-color) !important;
+}
+
+.projects .list-item.project-type-wrapper {
+    height: 150px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    background: var(--third-background-color);
+    border: 1px solid var(--second-background-color);
+}
+
+.projects .list-item.project-logo {
+    font-size: 50px;
+    margin: 5px;
+}
+
+.projects .list-item.project-type {
+    font-size: 15px;
 }
