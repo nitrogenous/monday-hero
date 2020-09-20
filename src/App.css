@@ -88,6 +88,15 @@ body, .projects {
     border: 1px solid #2745F1;
 }
 
+.projects .list-item.project-settings {
+    top: 5px;
+    right: 5px;
+    font-size: 18px;
+    color: #FDFEFF;
+    position: absolute;
+    display: inline-flex;
+}
+
 .projects .list-item.beta-mark {
     top: -1px;
     left: -1px;

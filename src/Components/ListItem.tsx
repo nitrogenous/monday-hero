@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Project } from '../Providers/ProjectsProvider';
-import { AppleOutlined, AndroidOutlined } from '@ant-design/icons';
+import { AppleOutlined, AndroidOutlined, MenuOutlined } from '@ant-design/icons';
 
 interface Props {
     project: Project,
@@ -8,6 +8,8 @@ interface Props {
 }
 
 const ListItem = ({project, projectIndex}:Props) => {
+
+    const [isHovering, setIsHovering] = useState(Boolean);
 
     const getIconOfProjectType = (projectType:string) => {
         switch(projectType) {
@@ -25,7 +27,11 @@ const ListItem = ({project, projectIndex}:Props) => {
     return (
         <div className='list-item card'>
             <span>{project.projectName}</span>
-            <div className='list-item project-type-wrapper'>
+            <div 
+                className='list-item project-type-wrapper' 
+                onMouseEnter={() => {setIsHovering(true)}}
+                onMouseLeave={() => {setIsHovering(false)}}>
+                {isHovering && <MenuOutlined className='list-item project-settings'/>}
                 {project.projectType === 'Android' && betaMarkElement}
                 {getIconOfProjectType(project.projectType)}
                 <span className='list-item project-type'>{project.projectType}</span>
