@@ -15,6 +15,8 @@ const { Provider, Consumer: ProjectsConsumer } = ProjectsContext;
 
 const ProjectsProvider = ({ children }: propTypesOfProvider) => {
     const [ projectsState, setProjectsState ] = useState(Array);
+    const [ forceRender, setForceRender ] = useState(0);
+
 
     useEffect(() => {
 		const projectsStorage = JSON.parse(localStorage.getItem('projects-storage') || '[]');
@@ -35,8 +37,11 @@ const ProjectsProvider = ({ children }: propTypesOfProvider) => {
     }, [ projectsState ]);
 
     const updateProject = useCallback((projectIndex, params) => {
-    }, [ projectsState ]);
-    
+        projectsState[projectIndex] = {...projectsState[projectIndex] as Object, ...params};
+
+        setForceRender(forceRender + 1);
+    }, [ projectsState, forceRender ]);
+        
     const removeProject = useCallback((projectIndex) => {
         let newProjectsState = projectsState.filter((value, index) => projectIndex !== index);
 
