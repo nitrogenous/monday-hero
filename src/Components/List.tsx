@@ -7,8 +7,7 @@ interface Props {
 
 const List = ({projectList}:Props) => {
     return (
-        <div> 
-            <p>List</p>
+        <div className='list-items-wrapper'> 
             {Object.values(projectList).map((data, index) => { 
                 return (
                     <ListItem project={data} projectIndex={index} key={index.toString()}/>
