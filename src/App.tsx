@@ -1,7 +1,8 @@
 import React from 'react';
 import { Providers } from './Providers/index';
 import Projects from './Containers/Projects';
-import "antd/dist/antd.css";
+import 'antd/dist/antd.css';
+import './App.css';
 
 function App() {
   return (
