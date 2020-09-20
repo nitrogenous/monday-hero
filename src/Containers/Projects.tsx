@@ -7,13 +7,14 @@ const { Header, Footer, Content } = Layout;
 
 const Projects = () => {
     console.log(useContext(ProjectsContext))
-    var { createProject } = useContext(ProjectsContext);
+    var { createProject, removeProject } = useContext(ProjectsContext);
 
     return (
         <Layout>
             <Header>
                 Projects
                 <button onClick={() => {createProject({projectName: 'mahmut', projectPlatform: 'IOS', projectCreateDate: Date.now() })}} >+</button>
+                <button onClick={() => {removeProject(2)}}>Remove</button>
             </Header>   
             <Content>
                 <List />

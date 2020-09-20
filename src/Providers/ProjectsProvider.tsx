@@ -23,7 +23,7 @@ const ProjectsProvider = ({ children }: propTypesOfProvider) => {
 	}, []);
 
     useEffect(() => {
-        localStorage.setItem('projects-storage', JSON.stringify(projectsState))        
+        localStorage.setItem('projects-storage', JSON.stringify(projectsState));     
     });
 
     const createProject = useCallback((params) => {
@@ -35,11 +35,12 @@ const ProjectsProvider = ({ children }: propTypesOfProvider) => {
     }, [ projectsState ]);
 
     const updateProject = useCallback((projectIndex, params) => {
-
     }, [ projectsState ]);
-
+    
     const removeProject = useCallback((projectIndex) => {
+        let newProjectsState = projectsState.filter((value, index) => projectIndex !== index);
 
+        setProjectsState(newProjectsState);
     }, [ projectsState ]);
 
     return <Provider value={{ createProject, updateProject, removeProject }}> { children } </Provider>
