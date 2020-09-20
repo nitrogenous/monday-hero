@@ -1,26 +1,45 @@
-import React, { createContext, useState, useEffect, ReactNode } from 'react';
-
-const ProjectsContext = createContext({});
-const { Provider, Consumer: ProjectsConsumer } = ProjectsContext;
+import React, { createContext, useState, useEffect, useCallback, ReactNode } from 'react';
 
 type propTypesOfProvider = {
-    children: ReactNode
+    children: ReactNode,
 };
 
+const defaultPropsOfContext = {
+    createProject: (arg: Object) => {},
+    updateProject: (arg: Object) => {},
+    removeProject: (arg: number) => {},
+};
+
+const ProjectsContext = createContext(defaultPropsOfContext);
+const { Provider, Consumer: ProjectsConsumer } = ProjectsContext;
+
 const ProjectsProvider = ({ children }: propTypesOfProvider) => {
-    const [ ProjectsState, setProjectsState ] = useState({});
+    const [ projectsState, setProjectsState ] = useState(Array);
 
-    const createProject = () => {
+    useEffect(() => {
+        const oldProjectsStorage = JSON.parse(localStorage.getItem('projectsStorage') || '{}');
 
-    };
+        localStorage.setItem('projectsStorage', JSON.stringify({...oldProjectsStorage, projectsState} || {}))
 
-    const updateProject = () => {
+        // console.log(projectsState);
+        console.log( JSON.parse(localStorage.getItem('projectsStorage') || '{}'))
+    })
 
-    }
+    const createProject = useCallback((params) => {
+        setProjectsState([...projectsState, {
+            'projectName': params.projectName,
+            'projectType': params.projectType,
+            'projectCreateDate': params.projectCreateDate
+        }]);
+    }, [ projectsState ]);
 
-    const removeProject = () => {
+    const updateProject = useCallback((params) => {
+        
+    }, [ projectsState ]);
 
-    };
+    const removeProject = useCallback((projectIndex) => {
+
+    }, [ projectsState ]);
 
     return <Provider value={{ createProject, updateProject, removeProject }}> { children } </Provider>
 };
