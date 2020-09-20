@@ -5,6 +5,7 @@ type propTypesOfProvider = {
 };
 
 const defaultPropsOfContext = {
+    projectsList: [{}],
     createProject: (params: Object) => {},
     updateProject: (projectIndex: number, params: Object) => {},
     removeProject: (projectIndex: number) => {},
@@ -14,7 +15,7 @@ const ProjectsContext = createContext(defaultPropsOfContext);
 const { Provider, Consumer: ProjectsConsumer } = ProjectsContext;
 
 const ProjectsProvider = ({ children }: propTypesOfProvider) => {
-    const [ projectsState, setProjectsState ] = useState(Array);
+    const [ projectsState, setProjectsState ] = useState(defaultPropsOfContext.projectsList);
     const [ forceRender, setForceRender ] = useState(0);
 
 
@@ -48,7 +49,7 @@ const ProjectsProvider = ({ children }: propTypesOfProvider) => {
         setProjectsState(newProjectsState);
     }, [ projectsState ]);
 
-    return <Provider value={{ createProject, updateProject, removeProject }}> { children } </Provider>
+    return <Provider value={{ projectsList: projectsState, createProject, updateProject, removeProject }}> { children } </Provider>
 };
 
 export { ProjectsProvider, ProjectsConsumer, ProjectsContext };

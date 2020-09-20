@@ -6,9 +6,8 @@ import { ProjectsContext } from '../Providers/ProjectsProvider';
 const { Header, Footer, Content } = Layout;
 
 const Projects = () => {
-    console.log(useContext(ProjectsContext))
-    var { createProject, removeProject, updateProject } = useContext(ProjectsContext);
-
+    var { projectsList, createProject, removeProject, updateProject } = useContext(ProjectsContext);
+    console.log(projectsList)
     return (
         <Layout>
             <Header>
