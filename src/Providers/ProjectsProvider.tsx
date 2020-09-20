@@ -8,7 +8,21 @@ type propTypesOfProvider = {
 };
 
 const ProjectsProvider = ({ children }: propTypesOfProvider) => {
-    return <Provider value={{}}> { children } </Provider>
+    const [ ProjectsState, setProjectsState ] = useState({});
+
+    const createProject = () => {
+
+    };
+
+    const updateProject = () => {
+
+    }
+
+    const removeProject = () => {
+
+    };
+
+    return <Provider value={{ createProject, updateProject, removeProject }}> { children } </Provider>
 };
 
 export { ProjectsProvider, ProjectsConsumer, ProjectsContext };
