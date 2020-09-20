@@ -5,9 +5,9 @@ type propTypesOfProvider = {
 };
 
 const defaultPropsOfContext = {
-    createProject: (arg: Object) => {},
-    updateProject: (arg: Object) => {},
-    removeProject: (arg: number) => {},
+    createProject: (params: Object) => {},
+    updateProject: (projectIndex: number, params: Object) => {},
+    removeProject: (projectIndex: number) => {},
 };
 
 const ProjectsContext = createContext(defaultPropsOfContext);
@@ -17,13 +17,14 @@ const ProjectsProvider = ({ children }: propTypesOfProvider) => {
     const [ projectsState, setProjectsState ] = useState(Array);
 
     useEffect(() => {
-        const oldProjectsStorage = JSON.parse(localStorage.getItem('projectsStorage') || '{}');
+		const projectsStorage = JSON.parse(localStorage.getItem('projects-storage') || '[]');
 
-        localStorage.setItem('projectsStorage', JSON.stringify({...oldProjectsStorage, projectsState} || {}))
+		setProjectsState(projectsStorage);
+	}, []);
 
-        // console.log(projectsState);
-        console.log( JSON.parse(localStorage.getItem('projectsStorage') || '{}'))
-    })
+    useEffect(() => {
+        localStorage.setItem('projects-storage', JSON.stringify(projectsState))        
+    });
 
     const createProject = useCallback((params) => {
         setProjectsState([...projectsState, {
@@ -33,8 +34,8 @@ const ProjectsProvider = ({ children }: propTypesOfProvider) => {
         }]);
     }, [ projectsState ]);
 
-    const updateProject = useCallback((params) => {
-        
+    const updateProject = useCallback((projectIndex, params) => {
+
     }, [ projectsState ]);
 
     const removeProject = useCallback((projectIndex) => {
