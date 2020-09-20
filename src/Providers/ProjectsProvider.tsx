@@ -1,55 +1,69 @@
 import React, { createContext, useState, useEffect, useCallback, ReactNode } from 'react';
 
-type propTypesOfProvider = {
+export type propTypesOfProvider = {
     children: ReactNode,
 };
 
-const defaultPropsOfContext = {
-    projectsList: [{}],
-    createProject: (params: Object) => {},
-    updateProject: (projectIndex: number, params: Object) => {},
-    removeProject: (projectIndex: number) => {},
+export type Project = {
+    projectName:string,
+    projectType:string,
+    projectCreateDate:number
+}
+
+export type Props ={
+    projectList: Project[],
+    createProject: (params:Project)=>void,
+    updateProject: (projectIndex: number, params: Partial<Project>) => void,
+    removeProject: (projectIndex: number) => void,
+}
+
+const defaultPropsOfContext:Props = {
+    projectList: [],
+    createProject: (params) => {},
+    updateProject: (projectIndex) => {},
+    removeProject: (projectIndex) => {},
 };
 
 const ProjectsContext = createContext(defaultPropsOfContext);
 const { Provider, Consumer: ProjectsConsumer } = ProjectsContext;
 
 const ProjectsProvider = ({ children }: propTypesOfProvider) => {
-    const [ projectsState, setProjectsState ] = useState(defaultPropsOfContext.projectsList);
-    const [ forceRender, setForceRender ] = useState(0);
-
+    const [ projectList, setProjectList ] = useState<Project[]>(defaultPropsOfContext.projectList);
 
     useEffect(() => {
-		const projectsStorage = JSON.parse(localStorage.getItem('projects-storage') || '[]');
-
-		setProjectsState(projectsStorage);
+		const localList = JSON.parse(localStorage.getItem('projects-storage') || '[]');
+		setProjectList(localList);
 	}, []);
 
     useEffect(() => {
-        localStorage.setItem('projects-storage', JSON.stringify(projectsState));     
-    });
+        localStorage.setItem('projects-storage', JSON.stringify(projectList));     
+    },[projectList]);
 
-    const createProject = useCallback((params) => {
-        setProjectsState([...projectsState, {
-            'projectName': params.projectName,
-            'projectType': params.projectPlatform,
-            'projectCreateDate': params.projectCreateDate
-        }]);
-    }, [ projectsState ]);
+    const createProject = useCallback((params:Project) => {
+        const project = {...params}
+        setProjectList([...projectList,project]);
+    }, [ projectList ]);
 
-    const updateProject = useCallback((projectIndex, params) => {
-        projectsState[projectIndex] = {...projectsState[projectIndex] as Object, ...params};
+    const updateProject = useCallback((projectIndex, params:Partial<Project>) => {
+        const newList = projectList.map((proj,index)=>{
+            if(index !== projectIndex) return proj;
+            return {
+                ...proj,
+                ...params,
+            }
+        });
 
-        setForceRender(forceRender + 1);
-    }, [ projectsState, forceRender ]);
+        setProjectList(newList);
+    }, [ projectList ]);
         
     const removeProject = useCallback((projectIndex) => {
-        let newProjectsState = projectsState.filter((value, index) => projectIndex !== index);
+        let newProjectsState = projectList.filter((value, index) => projectIndex !== index);
+        setProjectList(newProjectsState);
+    }, [ projectList ]);
 
-        setProjectsState(newProjectsState);
-    }, [ projectsState ]);
+    console.table(projectList);
 
-    return <Provider value={{ projectsList: projectsState, createProject, updateProject, removeProject }}> { children } </Provider>
+    return <Provider value={{ projectList, createProject, updateProject, removeProject }}> { children } </Provider>
 };
 
 export { ProjectsProvider, ProjectsConsumer, ProjectsContext };

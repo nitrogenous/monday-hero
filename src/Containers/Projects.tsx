@@ -6,13 +6,13 @@ import { ProjectsContext } from '../Providers/ProjectsProvider';
 const { Header, Footer, Content } = Layout;
 
 const Projects = () => {
-    var { projectsList, createProject, removeProject, updateProject } = useContext(ProjectsContext);
-    console.log(projectsList)
+    var { projectList, createProject,removeProject, updateProject } = useContext(ProjectsContext);
+    console.log(projectList)
     return (
         <Layout>
             <Header>
                 Projects
-                <button onClick={() => {createProject({projectName: 'mahmut', projectPlatform: 'IOS', projectCreateDate: Date.now() })}} >+</button>
+                <button onClick={() => {createProject({projectName: 'mahmut', projectType: 'IOS', projectCreateDate: Date.now() })}} >+</button>
                 <button onClick={() => {removeProject(2)}}>Remove</button>
                 <button onClick={() => {updateProject(3, {projectName: 'toprak'})}}>update</button>
             </Header>   
