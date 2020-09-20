@@ -20,10 +20,13 @@ const ListItem = ({project, projectIndex}:Props) => {
         }
     };
 
+    const betaMarkElement = <span className='list-item beta-mark'>BETA</span>;
+
     return (
         <div className='list-item card'>
             <span>{project.projectName}</span>
             <div className='list-item project-type-wrapper'>
+                {project.projectType === 'Android' && betaMarkElement}
                 {getIconOfProjectType(project.projectType)}
                 <span className='list-item project-type'>{project.projectType}</span>
             </div>

@@ -17,6 +17,10 @@ const Projects = () => {
                 <Button className='projects button' icon={<PlusOutlined />}  onClick={() => {createProject({projectName: 'mahmut', projectType: 'IOS', projectCreateDate: Date.now() })}} />
             </Header>   
             <Content className='projects content'>
+                <div className='projects list-selector'>
+                    <Button type='primary' size='small'>My Projects</Button>
+                    <Button size='small'>Templates</Button>
+                </div>
                 <List projectList={projectList} />
             </Content> 
           

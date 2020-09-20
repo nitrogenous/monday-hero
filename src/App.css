@@ -38,6 +38,18 @@ body, .projects {
     background: var(--second-background-color);
 }
 
+.projects.list-selector {
+    overflow: hidden;
+    border-radius: 5px;
+    display: inline-flex;
+    margin-bottom: 15px;
+}
+
+.projects.list-selector Button {
+    border-radius: 0 !important;
+}
+
+
 .projects .list-items-wrapper {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -59,11 +71,34 @@ body, .projects {
 .projects .list-item.project-type-wrapper {
     height: 150px;
     display: flex;
+    position: relative;
     align-items: center;
+    transition: 0.1s ease;
     flex-direction: column;
     justify-content: center;
     background: var(--third-background-color);
     border: 1px solid var(--second-background-color);
+
+}
+
+.projects .list-item.list-item.project-type-wrapper:hover {
+    color: #FDFEFF;
+    background: #2745F1;
+    transition: 0.1s ease;
+    border: 1px solid #2745F1;
+}
+
+.projects .list-item.beta-mark {
+    top: -1px;
+    left: -1px;
+    width: 50px;
+    color: #795605;
+    font-weight: bold;
+    position: absolute;
+    display: inline-flex;
+    background: #F1D943;
+    justify-content: center;
+    border-bottom-right-radius: 5px;
 }
 
 .projects .list-item.project-logo {
