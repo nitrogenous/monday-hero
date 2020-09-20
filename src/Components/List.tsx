@@ -11,7 +11,7 @@ const List = ({projectList}:Props) => {
             <p>List</p>
             {Object.values(projectList).map((data, index) => { 
                 return (
-                    <ListItem project={data} key={index.toString()}/>
+                    <ListItem project={data} projectIndex={index} key={index.toString()}/>
                 )  
             })}
         </div>

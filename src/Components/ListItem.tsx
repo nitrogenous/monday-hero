@@ -2,10 +2,11 @@ import React from 'react';
 import { Project } from '../Providers/ProjectsProvider';
 
 interface Props {
-    project: Project
+    project: Project,
+    projectIndex: Number
 }
 
-const ListItem = ({project}:Props) => {
+const ListItem = ({project, projectIndex}:Props) => {
     return (
         <div style={{display: 'flex'}}>
             <p>{project.projectName}</p>
