@@ -1,27 +1,25 @@
 import React, { useContext } from 'react';
 import List from '../Components/List';
-import { Layout } from 'antd';
+import { Layout, Button, Typography } from 'antd';
 import { ProjectsContext } from '../Providers/ProjectsProvider';
+import { PlusOutlined } from '@ant-design/icons';
 
-const { Header, Footer, Content } = Layout;
+const { Header, Content } = Layout;
+const { Title } = Typography;
 
 const Projects = () => {
-    var { projectList, createProject,removeProject, updateProject } = useContext(ProjectsContext);
+    var { projectList, createProject } = useContext(ProjectsContext);
     console.log(projectList)
     return (
-        <Layout>
-            <Header>
-                Projects
-                <button onClick={() => {createProject({projectName: 'mahmut', projectType: 'IOS', projectCreateDate: Date.now() })}} >+</button>
-                <button onClick={() => {removeProject(2)}}>Remove</button>
-                <button onClick={() => {updateProject(3, {projectName: 'toprak'})}}>update</button>
+        <Layout className='projects layout' >
+            <Header className='projects header'>
+                <Title level={2} className='projects title'>Projects</Title>
+                <Button className='projects button' icon={<PlusOutlined />}  onClick={() => {createProject({projectName: 'mahmut', projectType: 'IOS', projectCreateDate: Date.now() })}} />
             </Header>   
-            <Content>
+            <Content className='projects content'>
                 <List projectList={projectList} />
             </Content> 
-            <Footer>
-                Made by Toprak Koc
-            </Footer>
+          
         </Layout>
     );
 };
