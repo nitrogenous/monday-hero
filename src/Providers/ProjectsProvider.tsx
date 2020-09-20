@@ -12,9 +12,9 @@ export type Project = {
 
 export type Props ={
     projectList: Project[],
-    createProject: (params:Project)=>void,
-    updateProject: (projectIndex: number, params: Partial<Project>) => void,
-    removeProject: (projectIndex: number) => void,
+    createProject: (params:Project) => void,
+    updateProject: (projectIndex:number, params:Partial<Project>) => void,
+    removeProject: (projectIndex:number) => void,
 }
 
 const defaultPropsOfContext:Props = {
@@ -60,8 +60,6 @@ const ProjectsProvider = ({ children }: propTypesOfProvider) => {
         let newProjectsState = projectList.filter((value, index) => projectIndex !== index);
         setProjectList(newProjectsState);
     }, [ projectList ]);
-
-    console.table(projectList);
 
     return <Provider value={{ projectList, createProject, updateProject, removeProject }}> { children } </Provider>
 };

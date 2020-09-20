@@ -1,11 +1,19 @@
 import React from 'react';
 import ListItem from './ListItem';
 
-const List = () => {
+interface Props {
+    projectList:Object
+}
+
+const List = ({projectList}:Props) => {
     return (
         <div> 
             <p>List</p>
-            <ListItem />
+            {Object.values(projectList).map((data, index) => { 
+                return (
+                    <p>{data.projectName}</p> 
+                )  
+            })}
         </div>
     );
 };

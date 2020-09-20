@@ -17,7 +17,7 @@ const Projects = () => {
                 <button onClick={() => {updateProject(3, {projectName: 'toprak'})}}>update</button>
             </Header>   
             <Content>
-                <List />
+                <List projectList={projectList} />
             </Content> 
             <Footer>
                 Made by Toprak Koc
