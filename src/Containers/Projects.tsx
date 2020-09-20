@@ -1,12 +1,23 @@
 import React from 'react';
 import List from '../Components/List';
+import { Layout } from 'antd';
+
+const { Header, Footer, Content } = Layout;
 
 const Projects = () => {
     return (
-        <div className='projects-container wrapper'>
-            <p>Projects</p>
-            <List />
-        </div>
+        <Layout>
+            <Header>
+                Projects
+                <button>+</button>
+            </Header>   
+            <Content>
+                <List />
+            </Content> 
+            <Footer>
+                Made by Toprak Koc
+            </Footer>
+        </Layout>
     );
 };
 
