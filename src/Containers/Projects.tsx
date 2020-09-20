@@ -13,7 +13,7 @@ const Projects = () => {
         <Layout>
             <Header>
                 Projects
-                <button onClick={() => {createProject({projectName: 'mahmut', projectType: 'IOS', projectCreateDate: 123 })}} >+</button>
+                <button onClick={() => {createProject({projectName: 'mahmut', projectPlatform: 'IOS', projectCreateDate: 123 })}} >+</button>
             </Header>   
             <Content>
                 <List />

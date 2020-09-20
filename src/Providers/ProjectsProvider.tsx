@@ -28,7 +28,7 @@ const ProjectsProvider = ({ children }: propTypesOfProvider) => {
     const createProject = useCallback((params) => {
         setProjectsState([...projectsState, {
             'projectName': params.projectName,
-            'projectType': params.projectType,
+            'projectType': params.projectPlatform,
             'projectCreateDate': params.projectCreateDate
         }]);
     }, [ projectsState ]);
