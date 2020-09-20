@@ -1,6 +1,5 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 import { Project } from '../Providers/ProjectsProvider';
-import { Card } from 'antd';
 import { AppleOutlined, AndroidOutlined } from '@ant-design/icons';
 
 interface Props {
@@ -26,8 +25,6 @@ const ListItem = ({project, projectIndex}:Props) => {
             <span>{project.projectName}</span>
             <div className='list-item project-type-wrapper'>
                 {getIconOfProjectType(project.projectType)}
-                {/* <AppleOutlined className='list-item project-logo'/> */}
-                {/* <AndroidOutlined className='list-item project-logo'/> */}
                 <span className='list-item project-type'>{project.projectType}</span>
             </div>
             <p>{new Date(project.projectCreateDate).toString()}</p>
