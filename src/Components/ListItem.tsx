@@ -1,5 +1,6 @@
 import React from 'react';
 import { Project } from '../Providers/ProjectsProvider';
+import { Card } from 'antd';
 
 interface Props {
     project: Project,
@@ -8,11 +9,9 @@ interface Props {
 
 const ListItem = ({project, projectIndex}:Props) => {
     return (
-        <div style={{display: 'flex'}}>
-            <p>{project.projectName}</p>
-            <p>{project.projectType}</p>
-            <p>{new Date(project.projectCreateDate).toString()}</p>
-        </div>
+        <Card title={project.projectName} style={{ width: 300 }} >
+            <p>test</p>
+        </Card>
     );
 };
 
