@@ -41,7 +41,7 @@ const ProjectsProvider = ({ children }: propTypesOfProvider) => {
 
     const createProject = useCallback((params:Project) => {
         const project = {...params}
-        setProjectList([...projectList,project]);
+        setProjectList([project, ...projectList]);
     }, [ projectList ]);
 
     const updateProject = useCallback((projectIndex, params:Partial<Project>) => {
