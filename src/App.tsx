@@ -7,7 +7,7 @@ import './App.css';
 function App() {
   return (
     <Providers>
-        <Projects />
+      <Projects />
     </Providers>
   );
 }
