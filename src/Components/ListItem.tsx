@@ -38,6 +38,14 @@ const ListItem = ({project, projectIndex}:Props) => {
         )
     };
 
+    const maskProjectCreateDate = () => {
+        const projectDate = new Date(project.projectCreateDate);
+        const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+        const projectCreateDateText = monthNames[projectDate.getMonth()] + ' ' + projectDate.getDate() + ', ' + projectDate.getFullYear() + ', ' + projectDate.getHours() + ':' +projectDate.getMinutes();
+
+        return projectCreateDateText;
+    };
+
     const betaMarkElement = <span className='beta-mark'>BETA</span>;
     const menuButton = <MenuOutlined className='list-item project-settings' onClick={() => {setShowMenu(true)}}/>;
 
@@ -54,7 +62,7 @@ const ListItem = ({project, projectIndex}:Props) => {
                 {getIconOfProjectType(project.projectType)}
                 <span className='list-item project-type'>{project.projectType}</span>
             </div>
-            <p>{new Date(project.projectCreateDate).toString()}</p>
+            <p>{maskProjectCreateDate()}</p>
         </div>
     );
 };
