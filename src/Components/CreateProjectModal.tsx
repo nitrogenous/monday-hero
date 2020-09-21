@@ -55,12 +55,13 @@ const CreateProjectModal = ({visibilityOfModal, setVisibilityOfModal}:Props) => 
                                 <AppleOutlined />
                             </Radio.Button>
                             <Radio.Button value="Android" className='projects project-type-wrapper'>
+                                <span className='beta-mark'>BETA</span>
                                 <AndroidOutlined />
                             </Radio.Button>
                         </Space>
                     </Radio.Group>
                     <div  className='projects create-project-modal input-wrapper'>
-                        <input className='projects create-project-modal inputs' disabled placeholder='Wow you are in private beta!' />
+                        <input className='projects create-project-modal inputs' disabled placeholder='Wow! You are in private beta!' />
                         <input className='projects create-project-modal inputs' style={{background: 'none'}} placeholder='Project Name' value={projectName} onChange={projectNameOnChange} />
                     </div>
                 </div>

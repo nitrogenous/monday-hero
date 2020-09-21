@@ -38,7 +38,7 @@ const ListItem = ({project, projectIndex}:Props) => {
         )
     };
 
-    const betaMarkElement = <span className='list-item beta-mark'>BETA</span>;
+    const betaMarkElement = <span className='beta-mark'>BETA</span>;
     const menuButton = <MenuOutlined className='list-item project-settings' onClick={() => {setShowMenu(true)}}/>;
 
     return (
