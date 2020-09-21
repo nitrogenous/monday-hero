@@ -32,19 +32,24 @@ const CreateProjectModal = ({visibilityOfModal, setVisibilityOfModal}:Props) => 
             'projectCreateDate': projectCreateDate
         });
         
+        closeModal();
+    };
+    
+    const closeModal = () => {
         setProjectName('');
         setVisibilityOfModal(false);
-    };
+        setSelectedProjectType('iOS');
+    }
 
     return (
         <Modal
             className='projects create-project-modal'
             visible={visibilityOfModal}
             onOk={() => createNewProject()}
-            onCancel={() => setVisibilityOfModal(false)}
+            onCancel={() => closeModal()}
             closable={false}>
                 <div className='projects create-project-modal content'>
-                    <Radio.Group id='project-type' defaultValue="iOS" buttonStyle="solid" onChange={projectTypeOnChange}>
+                    <Radio.Group id='project-type' value={selectedProjectType} defaultValue="iOS" buttonStyle="solid" onChange={projectTypeOnChange}>
                         <Space size='middle'>
                             <Radio.Button value="iOS" className='projects project-type-wrapper'>
                                 <AppleOutlined />
