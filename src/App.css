@@ -118,3 +118,23 @@ body, .projects {
 .projects .list-item.project-type {
     font-size: 15px;
 }
+
+.projects .list-item.popup-menu {
+    top: 0;
+    right: 0;
+    overflow: hidden;
+    border-radius: 5px;
+    position: absolute;
+    display: inline-flex;
+    flex-direction: column;
+    background: var(--third-background-color);
+}
+
+.projects .list-item.popup-menu Button {
+    border-radius: 0 !important;
+    color: var(--main-font-color);
+}
+
+.projects .list-item.popup-menu Button:hover {
+    background: var(--second-background-color);
+}
