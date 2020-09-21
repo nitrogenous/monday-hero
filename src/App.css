@@ -9,11 +9,14 @@ html {
     padding: 0px 5vw;
 }
 
-body, .projects {
+body,
+.projects {
     background: var(--main-background-color);
 }
 
-input:focus, textarea:focus, select:focus{
+input:focus,
+textarea:focus,
+select:focus {
     outline: none;
 }
 
@@ -42,7 +45,7 @@ input:focus, textarea:focus, select:focus{
     background: var(--second-background-color);
 }
 
-.projects.create-project-modal {
+.create-project-modal {
     top: 0;
     display: flex;
     background: none;
@@ -50,30 +53,45 @@ input:focus, textarea:focus, select:focus{
     color: var(--main-font-color);
 }
 
-.projects.create-project-modal div {
+.create-project-modal div {
     border: none;
     background: #202122 !important;
 }
 
-.projects.create-project-modal.content {
+.create-project-modal.content {
     display: flex;
     align-items: center;
     width: 100%;
     flex-direction: column;
 }
 
-.projects.create-project-modal.input-wrapper {
+.create-project-modal.input-wrapper {
     width: 85%;
     margin: 15px 5px;
 }
 
-.projects.create-project-modal.inputs {
+.create-project-modal.inputs {
     margin: 5px 0px;
     border-radius: 2px;
     padding: 2.5px 5px;
     color: var(--main-font-color);
-    background: var(--main-background-color);
     border: 1px solid var(--second-background-color);
+}
+
+.projects.create-project-modal.beta-info-wrapper {
+    display: flex;
+    margin: 7.5px 0 10px;
+    padding: 5px 10px;
+    border-radius: 2px;
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: space-between;
+    border: 1px solid var(--second-background-color);
+    background: var(--third-background-color) !important;
+}
+
+.projects.create-project-modal.beta-info-wrapper>* {
+    display: inline-flex;
 }
 
 .projects.list-selector {
@@ -179,4 +197,16 @@ input:focus, textarea:focus, select:focus{
 
 .projects .list-item.popup-menu Button:hover {
     background: var(--second-background-color);
+}
+
+.projects .list-item.project-name {
+    font-size: 14px;
+    font-weight: 500;
+    margin: 5px 2.5px;
+}
+
+.projects .list-item.project-create-date {
+    font-size: 12px;
+    text-align: right;
+    margin: 5px 2.5px;
 }
