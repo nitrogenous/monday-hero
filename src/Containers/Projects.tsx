@@ -1,8 +1,8 @@
 import React, { useContext, useState } from 'react';
 import List from '../Components/List';
-import { Layout, Button, Typography, Modal, Radio } from 'antd';
+import { Layout, Button, Typography, Modal, Radio, Space } from 'antd';
 import { ProjectsContext } from '../Providers/ProjectsProvider';
-import { PlusOutlined } from '@ant-design/icons';
+import { AppleOutlined, AndroidOutlined, PlusOutlined } from '@ant-design/icons';
 
 const { Header, Content } = Layout;
 const { Title } = Typography;
@@ -10,25 +10,37 @@ const { Title } = Typography;
 const Projects = () => {
     var { projectList, createProject } = useContext(ProjectsContext);
     const [visibilityOfModal, setVisibilityOfModal] = useState(Boolean);
-
     const createProjectModal = () => {
         return (
             <Modal
-                className='projects create-modal'
+                className='projects create-project-modal'
                 visible={visibilityOfModal}
-                onOk={() => setVisibilityOfModal(false)}
+                onOk={() => createNewProject()}
                 onCancel={() => setVisibilityOfModal(false)}
                 closable={false}>
-                    <div className='projects create-modal-content'>
-                        <Radio.Group defaultValue="a" buttonStyle="solid">
-                            <Radio.Button value="iOS">iOS</Radio.Button>
-                            <Radio.Button value="Android">Android</Radio.Button>
+                    <div className='projects create-project-modal content'>
+                        <Radio.Group id='project-type' defaultValue="iOS" buttonStyle="solid">
+                            <Space size='middle'>
+                                <Radio.Button value="iOS" className='projects project-type-wrapper'>
+                                    <AppleOutlined />
+                                </Radio.Button>
+                                <Radio.Button value="Android" className='projects project-type-wrapper'>
+                                    <AndroidOutlined />
+                                </Radio.Button>
+                            </Space>
                         </Radio.Group>
-                        <input placeholder='Project Name' />
+                        <div  className='projects create-project-modal input-wrapper'>
+                            <input className='projects create-project-modal inputs' disabled placeholder='Wow you are in private beta!' />
+                            <input className='projects create-project-modal inputs' style={{background: 'none'}}placeholder='Project Name' />
+                        </div>
                     </div>
             </Modal>
         );
-    }
+    };
+
+    const createNewProject = () => {
+        setVisibilityOfModal(false);
+    };
 
     return (
         <Layout className='projects layout' >
