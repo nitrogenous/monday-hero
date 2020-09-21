@@ -31,7 +31,7 @@ const ListItem = ({project, projectIndex}:Props) => {
                 <Button type='link'>
                     Member Settings
                 </Button>
-                <Button type='link' onClick={() => {removeProject(projectIndex)}}>
+                <Button type='link' onClick={() => {setShowMenu(false); removeProject(projectIndex)}}>
                     Remove Project
                 </Button>
             </div>
