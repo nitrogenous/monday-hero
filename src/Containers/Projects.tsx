@@ -19,11 +19,13 @@ const Projects = () => {
                 onOk={() => setVisibilityOfModal(false)}
                 onCancel={() => setVisibilityOfModal(false)}
                 closable={false}>
-                <Radio.Group defaultValue="a" buttonStyle="solid">
-                    <Radio.Button value="a">Hangzhou</Radio.Button>
-                    <Radio.Button value="b">Shanghai</Radio.Button>
-                </Radio.Group>
-                <input />
+                    <div className='projects create-modal-content'>
+                        <Radio.Group defaultValue="a" buttonStyle="solid">
+                            <Radio.Button value="iOS">iOS</Radio.Button>
+                            <Radio.Button value="Android">Android</Radio.Button>
+                        </Radio.Group>
+                        <input placeholder='Project Name' />
+                    </div>
             </Modal>
         );
     }

@@ -38,6 +38,24 @@ body, .projects {
     background: var(--second-background-color);
 }
 
+.projects.create-modal {
+    top: 0;
+    height: 0;
+    color: var(--main-font-color);
+    /* background: #202122 !important; */
+}
+
+.projects.create-modal div {
+    border: none;
+    background: #202122 !important;
+}
+
+.projects.create-modal-content {
+    display: flex;
+    align-items: center; 
+    flex-direction: column;
+}
+
 .projects.list-selector {
     overflow: hidden;
     border-radius: 5px;
