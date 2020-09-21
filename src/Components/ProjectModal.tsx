@@ -62,7 +62,7 @@ const ProjectModal = ({ onClose, editItem }: Props) => {
                 </Radio.Group>
                 <div className='projects create-project-modal input-wrapper'>
                     <div className='projects create-project-modal beta-info-wrapper'>
-                        <span>Wow! You are in close beta!</span>
+                        <span>Wow! You are in private beta!</span>
                         <Button type='link'>Join slack!</Button>
                     </div>
                     <input className='projects create-project-modal inputs' placeholder='Project Name' value={projectName} onChange={projectNameOnChange} />
